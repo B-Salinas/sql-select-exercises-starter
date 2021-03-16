@@ -30,7 +30,8 @@
      2018 from the "cities" table.
 */
 
--- your query here
+SELECT city, state, population_estimate_2018
+FROM cities;
 
 \echo ========= Problem 2.2 ====================================================
 \echo
@@ -39,7 +40,8 @@
      "airports" table.
 */
 
--- your query here
+SELECT name 
+FROM airports;
 
 ---- Phase 3: Add WHERE clauses ------------------------------------------------
 -- Select specific rows from a table using WHERE and common operators.
@@ -51,7 +53,9 @@
      in 2018 of the city of San Diego.
 */
 
--- your query here
+SELECT population_estimate_2018 
+FROM cities
+WHERE city = 'San Diego';
 
 \echo ========= Problem 3.2 ====================================================
 \echo
@@ -61,7 +65,9 @@
       Phoenix, Jacksonville, Charlotte, Nashville.
 */
 
- -- your query here
+SELECT city, state, population_estimate_2018
+FROM cities
+where city IN ('Phoenix', 'Jacksonville', 'Charlotte', 'Nashville');
 
 \echo ========= Problem 3.3 ====================================================
 \echo
@@ -71,7 +77,9 @@
      city, state, and estimated population in 2018 columns.
 */
 
--- your query here
+SELECT city, state, population_estimate_2018
+FROM cities
+WHERE population_estimate_2018 BETWEEN 800000 AND 900000;
 
 \echo ========= Problem 3.4 ====================================================
 \echo
@@ -81,7 +89,9 @@
      1,000,000 people).
 */
 
--- your query here
+SELECT city, state, population_estimate_2018
+FROM cities
+WHERE population_estimate_2018 > 1000000;
 
 \echo ========= Problem 3.5 ====================================================
 \echo
@@ -91,20 +101,21 @@
      uses a WHERE clause to return only the cities in Texas.
 */
 
--- your query here
+SELECT city, (population_estimate_2018 / 1000000) AS population_estimate_2018
+FROM cities
+WHERE state = 'Texas';
 
 \echo ========= Problem 3.6 ====================================================
 \echo
 /*
-3.6) Write a SQL query to get the city and estimated population in 2018 in
-     number of millions (i.e. without zeroes at the end: 1 million), and that
-     uses a WHERE clause to return only the cities in Texas. Write a SQL query
-     that uses a WHERE clause to get the city, state, and estimated population
-     in 2018 of cities that are NOT in the following states:
+3.6) Write a SQL query that uses a WHERE clause to get the city, state, and 
+     estimated population in 2018 of cities that are NOT in the following states:
      New York, California, Texas.
 */
 
--- your query here
+SELECT city, state, population_estimate_2018
+FROM cities
+WHERE state NOT IN ('New York', 'California', 'Texas');
 
 \echo ========= Problem 3.7 ====================================================
 \echo
@@ -115,7 +126,9 @@
      (Note: See the PostgreSQL doc on Pattern Matching for more information.)
 */
 
--- your query here
+SELECT city, state, population_estimate_2018
+FROM cities
+WHERE city LIKE 'S%';
 
 \echo ========= Problem 3.8 ====================================================
 \echo
@@ -126,7 +139,9 @@
      population in 2018.
 */
 
--- your query here
+SELECT city, land_area_sq_mi_2016, population_estimate_2018
+FROM cities
+WHERE land_area_sq_mi_2016 > 400 OR population_estimate_2018 > 2000000;
 
 \echo ========= Problem 3.9 ====================================================
 \echo
@@ -137,7 +152,10 @@
      name, the land area, and the estimated population in 2018.
 */
 
--- your query here
+SELECT city, land_area_sq_mi_2016, population_estimate_2018
+FROM cities
+WHERE (land_area_sq_mi_2016 > 400 OR population_estimate_2018 > 2000000)
+AND NOT (land_area_sq_mi_2016 > 400 AND population_estimate_2018 > 2000000);
 
 \echo ========= Problem 3.10 ===================================================
 \echo
